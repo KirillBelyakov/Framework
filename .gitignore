@@ -10,6 +10,6 @@
 *.db
 /target
 /bin
-.idea
-.iml
+*.idea
+*.iml
 target
