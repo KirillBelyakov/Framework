@@ -117,38 +117,22 @@ public class CalculatorPage extends AbstractPage {
     }
 
     public CalculatorPage setOperatingSystem() {
-        waitForElementToBeClickable(driver, operatingSystemDropDownList);
-        clickThroughJS(operatingSystemDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_OPERATING_SYSTEM_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_OPERATING_SYSTEM_BUTTON));
-        logger.info("Операционная система выбрана");
+        setDropDownOption(operatingSystemDropDownList, VALUE_OF_OPERATING_SYSTEM_BUTTON);
         return this;
     }
 
     public CalculatorPage setMachineClass() {
-        waitForElementToBeClickable(driver, machineClassDropDownList);
-        clickThroughJS(machineClassDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_MACHINE_CLASS_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_MACHINE_CLASS_BUTTON));
-        logger.info("Класс виртуальной машины выбран");
+        setDropDownOption(machineClassDropDownList, VALUE_OF_MACHINE_CLASS_BUTTON);
         return this;
     }
 
     public CalculatorPage setMachineSeries() {
-        waitForElementToBeClickable(driver, machineSeriesDropDownList);
-        clickThroughJS(machineSeriesDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_MACHINE_SERIES_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_MACHINE_SERIES_BUTTON));
-        logger.info("Серия виртуальной машины выбрана");
+        setDropDownOption(machineSeriesDropDownList, VALUE_OF_MACHINE_SERIES_BUTTON);
         return this;
     }
 
     public CalculatorPage setMachineType() {
-        waitForElementToBeClickable(driver, machineTypeDropDownList);
-        clickThroughJS(machineTypeDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_MACHINE_TYPE_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_MACHINE_TYPE_BUTTON));
-        logger.info("Тип виртуальной машины выбран");
+        setDropDownOption(machineTypeDropDownList, VALUE_OF_MACHINE_TYPE_BUTTON);
         return this;
     }
 
@@ -159,48 +143,36 @@ public class CalculatorPage extends AbstractPage {
     }
 
     public CalculatorPage setNumberOfGPU() {
-        waitForElementToBeClickable(driver, numberOfGPUDropDownList);
-        clickThroughJS(numberOfGPUDropDownList);
-        waitForElementToBeClickable(driver, VALUE_NUMBER_OF_GPUS_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_NUMBER_OF_GPUS_BUTTON));
-        logger.info("количество GPU выбрано");
+        setDropDownOption(numberOfGPUDropDownList, VALUE_NUMBER_OF_GPUS_BUTTON);
         return this;
     }
 
     public CalculatorPage setGPUType() {
-        waitForElementToBeClickable(driver, gpuTypeDropDownList);
-        clickThroughJS(gpuTypeDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_GPU_TYPE_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_GPU_TYPE_BUTTON));
-        logger.info("значение GPU type выбрано");
+        setDropDownOption(gpuTypeDropDownList, VALUE_OF_GPU_TYPE_BUTTON);
         return this;
     }
 
     public CalculatorPage setLocalSSD() {
-        waitForElementToBeClickable(driver, localSSDDropDownList);
-        clickThroughJS(localSSDDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_LOCAL_SSD_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_LOCAL_SSD_BUTTON));
-        logger.info("значение LocalSSD выбрано");
+        setDropDownOption(localSSDDropDownList, VALUE_OF_LOCAL_SSD_BUTTON);
         return this;
     }
 
     public CalculatorPage setDatacenterLocation() {
-        waitForElementToBeClickable(driver, datacenterLocationDropDownList);
-        clickThroughJS(datacenterLocationDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_DATACENTER_LOCATION_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_DATACENTER_LOCATION_BUTTON));
-        logger.info("DatacenterLocation выбрано");
+        setDropDownOption(datacenterLocationDropDownList, VALUE_OF_DATACENTER_LOCATION_BUTTON);
         return this;
     }
 
     public CalculatorPage setCommittedUsage() {
-        waitForElementToBeClickable(driver, commitedUsageDropDownList);
-        clickThroughJS(commitedUsageDropDownList);
-        waitForElementToBeClickable(driver, VALUE_OF_COMMITTED_USAGE_BUTTON);
-        clickThroughJS(driver.findElement(VALUE_OF_COMMITTED_USAGE_BUTTON));
-        logger.info("значение Committed Usage установлено");
+        setDropDownOption(commitedUsageDropDownList, VALUE_OF_COMMITTED_USAGE_BUTTON);
         return this;
+    }
+
+    public void setDropDownOption(WebElement webElement, By webElementBy) {
+        waitForElementToBeClickable(driver, webElement);
+        clickThroughJS(webElement);
+        waitForElementToBeClickable(driver, webElementBy);
+        clickThroughJS(driver.findElement(webElementBy));
+        logger.info("Элемент" + webElement + "выбран");
     }
 
     public CalculatorPage addToEstimate() {
@@ -268,6 +240,4 @@ public class CalculatorPage extends AbstractPage {
         waitPresenceOfElementLocated(driver, VALUE_OF_COMMITMENT_TERM_FROM_ESTIMATE);
         return driver.findElement(VALUE_OF_COMMITMENT_TERM_FROM_ESTIMATE).getText();
     }
-
-
 }
